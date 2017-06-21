@@ -41,12 +41,12 @@ This project is for the model predction control lesson in Udacity. In this proje
 
 I use a kinematic model for the car, the states are the position (*x*,*y*), the speed of the car *v*, and the direction of the car $\psi$. The actions applied to the car are the steering angle of the car $\delta$ and the accelaration of the car *a*. The kinematic functions regarding these variable are given as:
 
-$$x_{t+1}​​=x_t ​​+ v_t​​\cos(\psi_t​​){dt}$$
-$$y​_{t+1}​​​=y_t​​+v​_t​​\sin(\psi_t​​​​){dt}$$
-$$\psi_{t+1}=\psi_t​​​​​​+​{L​_f}{​​​​v_​t}\delta{dt}$$
-$$v​_{t+1}​​=v​_t​​+{a_​t}​​{dt}$$
-```
-where $L​_f$ is the distance between the front of the vehicle and its center of gravity.
+$$x_{t+1}=x_t+v_t\cos(\psi_t){dt}$$
+$$y_{t+1}=y_t+v_t\sin(\psi_t){dt}$$
+$$\psi_{t+1}=\psi_t+{L_f}{v_t}\delta{dt}$$
+$$v_{t+1}=v_t+{a_t}{dt}$$
+
+where $L_f$ is the distance between the front of the vehicle and its center of gravity.
 
 ### Timestep Length and Elapsed Duration
 
