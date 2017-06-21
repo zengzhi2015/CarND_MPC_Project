@@ -110,5 +110,7 @@ In the previous submittion, it seems that the performance of the car is differen
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/svCiJ1t0-Ls" frameborder="0" allowfullscreen></iframe>
 
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/svCiJ1t0-Ls/0.jpg)](https://www.youtube.com/watch?v=svCiJ1t0-Ls)
+
 
 
