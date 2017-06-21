@@ -39,14 +39,14 @@ This project is for the model predction control lesson in Udacity. In this proje
 
 ### Model Details
 
-I use a kinematic model for the car, the states are the position (*x*,*y*), the speed of the car *v*, and the direction of the car $\psi$. The actions applied to the car are the steering angle of the car $\delta$ and the accelaration of the car *a*. The kinematic functions regarding these variable are given as:
+I use a kinematic model for the car, the states are the position (*x*,*y*), the speed of the car *v*, and the direction of the car *psi*. The actions applied to the car are the steering angle of the car *delta* and the accelaration of the car *a*. The kinematic functions regarding these variable are given as:
 
-![equation](http://latex.codecogs.com/gif.latex?%24%24x_%7Bt%2B1%7D%3Dx_t%2Bv_t%5Ccos%28%5Cpsi_t%29%7Bdt%7D%24%24)
-![equation](http://latex.codecogs.com/gif.latex?%24%24y_%7Bt%2B1%7D%3Dy_t%2Bv_t%5Csin%28%5Cpsi_t%29%7Bdt%7D%24%24)
-![equation](http://latex.codecogs.com/gif.latex?%24%24%5Cpsi_%7Bt%2B1%7D%3D%5Cpsi_t%2B%7BL_f%7D%7Bv_t%7D%5Cdelta%7Bdt%7D%24%24)
-![equation](http://latex.codecogs.com/gif.latex?%24%24v_%7Bt%2B1%7D%3Dv_t%2B%7Ba_t%7D%7Bdt%7D%24%24)
+![equation](http://latex.codecogs.com/gif.latex?%24%24x_%7Bt%2B1%7D%3Dx_t%2Bv_t%5Ccos%28%5Cpsi_t%29%7Bdt%7D%24%24)  
+![equation](http://latex.codecogs.com/gif.latex?%24%24y_%7Bt%2B1%7D%3Dy_t%2Bv_t%5Csin%28%5Cpsi_t%29%7Bdt%7D%24%24)  
+![equation](http://latex.codecogs.com/gif.latex?%24%24%5Cpsi_%7Bt%2B1%7D%3D%5Cpsi_t%2B%7BL_f%7D%7Bv_t%7D%5Cdelta%7Bdt%7D%24%24)  
+![equation](http://latex.codecogs.com/gif.latex?%24%24v_%7Bt%2B1%7D%3Dv_t%2B%7Ba_t%7D%7Bdt%7D%24%24)  
 
-where $L_f$ is the distance between the front of the vehicle and its center of gravity.
+where *Lf* is the distance between the front of the vehicle and its center of gravity.
 
 ### Timestep Length and Elapsed Duration
 
