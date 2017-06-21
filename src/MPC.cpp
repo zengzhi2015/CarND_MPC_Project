@@ -29,7 +29,8 @@ double dt = 0.1;
 const double Lf = 2.67;
 
 // Set the reference speed
-AD<double> ref_v = 0;
+// AD<double> ref_v = 0;
+double ref_v = 95;
 
 // The solver takes all the state variables and actuator
 // variables in a singular vector. Thus, we should to establish
@@ -63,46 +64,46 @@ class FG_eval {
     // Reference State Cost
     // The part of the cost based on the reference state.
 
-    // Adaptive control of the speed delta_max = 0.436332;
-    // First, calculate the curvature at 20 meters ahead
-    AD<double> x = 20;
-    AD<double> yp = coeffs[1] + 2 * coeffs[2] * x + 3 * coeffs[3] * x * x;
-    AD<double> ypp = 2 * coeffs[2] + 6 * coeffs[3] * x;
-    AD<double> k = abs(ypp)/CppAD::pow(1 + yp * yp, 1.5);
-    // decrease the reference speed if the curvature is too large
-    ref_v = 100 * (1 - 40 * k);
-    // Saturation
-    if(ref_v < 40) {
-      ref_v = 40;
-    }
+//    // Adaptive control of the speed delta_max = 0.436332;
+//    // First, calculate the curvature at 20 meters ahead
+//    AD<double> x = 20;
+//    AD<double> yp = coeffs[1] + 2 * coeffs[2] * x + 3 * coeffs[3] * x * x;
+//    AD<double> ypp = 2 * coeffs[2] + 6 * coeffs[3] * x;
+//    AD<double> k = abs(ypp)/CppAD::pow(1 + yp * yp, 1.5);
+//    // decrease the reference speed if the curvature is too large
+//    ref_v = 100 * (1 - 40 * k);
+//    // Saturation
+//    if(ref_v < 40) {
+//      ref_v = 40;
+//    }
 
-    // Adaptively control the punishment
-    AD<double> dv = 0;
-    AD<double> weight = 0;
-    if(ref_v > 40) {
-      dv = ref_v - 40;
-    }
-    // Deacrease the  punishment on cte when the speed is large
-    // weight = (100 - dv)/6;
-    weight = 10 * CppAD::exp(-dv/20);
+//    // Adaptively control the punishment
+//    AD<double> dv = 0;
+//    AD<double> weight = 0;
+//    if(ref_v > 40) {
+//      dv = ref_v - 40;
+//    }
+//    // Deacrease the  punishment on cte when the speed is large
+//    // weight = (100 - dv)/6;
+//    weight = 10 * CppAD::exp(-dv/20);
 
     for (uint t = 0; t < N; t++) {
-      fg[0] += weight*CppAD::pow(vars[cte_start + t], 2);
-      fg[0] += 100*CppAD::pow(vars[epsi_start + t], 2);
-      fg[0] += 5*CppAD::pow(vars[v_start + t] - ref_v, 2);
+      fg[0] += 4*CppAD::pow(vars[cte_start + t], 2);
+      fg[0] += 1000*CppAD::pow(vars[epsi_start + t], 2);
+      fg[0] += CppAD::pow(vars[v_start + t] - ref_v, 2);
     }
 
     // Minimize the use of actuators.
     for (uint t = 0; t < N - 1; t++) {
-      fg[0] += 100*CppAD::pow(vars[delta_start + t], 2);
+      fg[0] += CppAD::pow(vars[delta_start + t], 2);
       fg[0] += CppAD::pow(vars[a_start + t], 2);
     }
 
     // Minimize the value gap between sequential actuations.
     // Increase the punishment on steering angle change if the speed is large
-    weight = dv * 100 + 500;
+//    weight = dv * 100 + 500;
     for (uint t = 0; t < N - 2; t++) {
-      fg[0] += weight*CppAD::pow(vars[delta_start + t + 1] - vars[delta_start + t], 2);
+      fg[0] += 10000*CppAD::pow(vars[delta_start + t + 1] - vars[delta_start + t], 2);
       fg[0] += CppAD::pow(vars[a_start + t + 1] - vars[a_start + t], 2);
     }
 
