@@ -106,9 +106,7 @@ In this project, only three weights are different from the starter code given by
 
 ### Recorded video
 
-In the previous submittion, it seems that the performance of the car is different between running on the reviewer's device and on my device. Anyway, the suggestions given by the reviewer is really pertinent. So, I have carefully revised my code according to his suggestions. In addition, I have recorded the simulation results in this submittion and posted it on Youtube. Click [this address](https://youtu.be/svCiJ1t0-Ls) to see it.
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/svCiJ1t0-Ls" frameborder="0" allowfullscreen></iframe>
+In the previous submittion, it seems that the performance of the car is different between running on the reviewer's device and on my device. Anyway, the suggestions given by the reviewer is really pertinent. So, I have carefully revised my code according to his suggestions. In addition, I have recorded the simulation results in this submittion and posted it on Youtube. Click [this address](https://youtu.be/svCiJ1t0-Ls) or the following picture to see it.
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/svCiJ1t0-Ls/0.jpg)](https://www.youtube.com/watch?v=svCiJ1t0-Ls)
 
